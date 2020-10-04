@@ -1,8 +1,11 @@
 package th.ac.ku.bankaccount.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
     @Entity
     public class BankAccount {
 
@@ -17,9 +20,7 @@ import javax.persistence.Id;
         public int getId() {
             return id;
         }
-        public void setId(int id) {
-            this.id = id;
-        }
+
         public int getCustomerId() {
             return customerId;
         }
@@ -38,6 +39,7 @@ import javax.persistence.Id;
         public void setBalance(double balance) {
             this.balance = balance;
         }
+
 
         @Override
         public String toString() {

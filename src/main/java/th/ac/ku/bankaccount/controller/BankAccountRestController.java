@@ -47,14 +47,20 @@ public class BankAccountRestController {
         return record;
     }
 
+
     @PutMapping("/{id}")
     public BankAccount update(@PathVariable int id,
                               @RequestBody BankAccount bankAccount) {
         BankAccount record = repository.findById(id).get();
-        record.setBalance(bankAccount.getBalance());
+        if(record.getBalance()+bankAccount.getBalance()<0){
+            record.setBalance(0.0);
+        }
+        else{
+        record.setBalance(record.getBalance()+bankAccount.getBalance());}
         repository.save(record);
         return record;
     }
+
 
 
 }
